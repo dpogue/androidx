@@ -1076,6 +1076,22 @@ public class WebViewFeatureInternal {
             new ApiFeature.NoFramework(WebViewFeature.HTTP_CACHE_MANAGER,
                     Features.HTTP_CACHE_MANAGER);
 
+    /**
+     * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    public static final ApiFeature.NoFramework THEME_COLOR_CALLBACK =
+            new ApiFeature.NoFramework(WebViewFeature.THEME_COLOR_CALLBACK,
+                    Features.THEME_COLOR_CALLBACK);
+
+    /**
+     * This feature covers
+     * {@link WebChromeClientCompat#onViewportFitChanged(WebView, int)}
+     */
+    public static final ApiFeature.NoFramework VIEWPORT_FIT_CALLBACK =
+            new ApiFeature.NoFramework(WebViewFeature.VIEWPORT_FIT_CALLBACK,
+                    Features.VIEWPORT_FIT_CALLBACK);
+
     // --- Add new feature constants above this line ---
 
     private WebViewFeatureInternal() {

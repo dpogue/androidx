@@ -40,6 +40,7 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.webkit.JavaScriptExecutionWorld;
 import androidx.webkit.NavigationParameters;
 import androidx.webkit.ScriptHandler;
+import androidx.webkit.WebChromeClientCompat;
 import androidx.webkit.WebMessageCompat;
 import androidx.webkit.WebMessagePortCompat;
 import androidx.webkit.WebSettingsCompat;
@@ -623,10 +624,10 @@ public class WebViewOnUiThread implements AutoCloseable {
      * it can derive from this class or call onProgressChanged
      * directly.
      */
-    public static class WaitForProgressClient extends WebChromeClient {
+    public static class WaitForProgressClient extends WebChromeClientCompat {
         private final WebViewOnUiThread mOnUiThread;
 
-        WaitForProgressClient(WebViewOnUiThread onUiThread) {
+        public WaitForProgressClient(@NonNull WebViewOnUiThread onUiThread) {
             mOnUiThread = onUiThread;
         }
 

@@ -456,6 +456,15 @@ package androidx.webkit {
     method public androidx.webkit.UserAgentMetadata.Builder setWow64(boolean);
   }
 
+  public class WebChromeClientCompat extends android.webkit.WebChromeClient {
+    ctor public WebChromeClientCompat();
+    method @UiThread public void onReceivedThemeColor(android.webkit.WebView, android.graphics.Color);
+    method @UiThread public void onViewportFitChanged(android.webkit.WebView, int);
+    field public static final int VIEWPORT_FIT_AUTO = 0; // 0x0
+    field public static final int VIEWPORT_FIT_CONTAIN = 1; // 0x1
+    field public static final int VIEWPORT_FIT_COVER = 2; // 0x2
+  }
+
   public class WebMessageCompat {
     ctor @RequiresFeature(name=androidx.webkit.WebViewFeature.WEB_MESSAGE_ARRAY_BUFFER, enforcement="androidx.webkit.WebViewFeature#isFeatureSupported") public WebMessageCompat(byte[]);
     ctor @RequiresFeature(name=androidx.webkit.WebViewFeature.WEB_MESSAGE_ARRAY_BUFFER, enforcement="androidx.webkit.WebViewFeature#isFeatureSupported") public WebMessageCompat(byte[], androidx.webkit.WebMessagePortCompat![]?);

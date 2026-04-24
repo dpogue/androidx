@@ -23,6 +23,12 @@ GetterSetterNames: androidx.webkit.ServiceWorkerWebSettingsCompat#getBlockNetwor
     Symmetric method for `setBlockNetworkLoads` must be named `isBlockNetworkLoads`; was `getBlockNetworkLoads`
 
 
+InvalidNullabilityOverride: androidx.webkit.WebChromeClientCompat#onReceivedThemeColor(android.webkit.WebView, android.graphics.Color) parameter #0:
+    Invalid nullability on type android.webkit.WebView in parameter `view` in method `onReceivedThemeColor`. Parameter in method override cannot use a non-null type when the corresponding type from the super method is platform-nullness.
+InvalidNullabilityOverride: androidx.webkit.WebChromeClientCompat#onReceivedThemeColor(android.webkit.WebView, android.graphics.Color) parameter #1:
+    Invalid nullability on type android.graphics.Color in parameter `color` in method `onReceivedThemeColor`. Parameter in method override cannot use a non-null type when the corresponding type from the super method is platform-nullness.
+InvalidNullabilityOverride: androidx.webkit.WebChromeClientCompat#onViewportFitChanged(android.webkit.WebView, int) parameter #0:
+    Invalid nullability on type android.webkit.WebView in parameter `view` in method `onViewportFitChanged`. Parameter in method override cannot use a non-null type when the corresponding type from the super method is platform-nullness.
 InvalidNullabilityOverride: androidx.webkit.WebViewClientCompat#onPageCommitVisible(android.webkit.WebView, String) parameter #0:
     Invalid nullability on type android.webkit.WebView in parameter `view` in method `onPageCommitVisible`. Parameter in method override cannot use a non-null type when the corresponding type from the super method is platform-nullness.
 InvalidNullabilityOverride: androidx.webkit.WebViewClientCompat#onPageCommitVisible(android.webkit.WebView, String) parameter #1:
