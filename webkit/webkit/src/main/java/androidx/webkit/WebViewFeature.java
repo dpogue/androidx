@@ -152,6 +152,7 @@ public class WebViewFeature {
             NAVIGATION_LISTENER_NAVIGATION_STATE,
             NAVIGATION_LISTENER_NAVIGATION_VISIBLE,
             GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1,
+            THEME_COLOR_CALLBACK,
     })
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.PARAMETER, ElementType.METHOD})
@@ -1081,6 +1082,14 @@ public class WebViewFeature {
     @WebViewCompat.ExperimentalGoogleAccountsCallback
     public static final String GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1 =
             "GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1";
+
+    /**
+     * Feature for {@link #isFeatureSupported(String)}.
+     * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String THEME_COLOR_CALLBACK = "THEME_COLOR_CALLBACK";
 
     /**
      * Return whether a feature is supported at run-time. This will check whether a feature is

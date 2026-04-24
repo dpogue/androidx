@@ -1171,6 +1171,14 @@ public class WebViewFeatureInternal {
             new ApiFeature.NoFramework(WebViewFeature.GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1,
                     Features.GOOGLE_ACCOUNTS_CALLBACK);
 
+    /**
+     * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    public static final ApiFeature.NoFramework THEME_COLOR_CALLBACK =
+            new ApiFeature.NoFramework(WebViewFeature.THEME_COLOR_CALLBACK,
+                    Features.THEME_COLOR_CALLBACK);
+
     // --- Add new feature constants above this line ---
 
     private WebViewFeatureInternal() {
