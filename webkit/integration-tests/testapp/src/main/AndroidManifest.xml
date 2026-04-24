@@ -201,6 +201,9 @@
             android:name=".NavigateActivity"
             android:exported="true" />
         <activity
+            android:name=".WebChromeClientActivity"
+            android:exported="true" />
+        <activity
             android:name=".GoogleAccountsCallbackActivity"
             android:exported="true" />
         <activity

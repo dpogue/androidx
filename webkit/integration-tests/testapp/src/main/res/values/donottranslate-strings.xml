@@ -114,6 +114,7 @@
     <string name="preconnect_activity_title">Preconnect Demo</string>
     <string name="mute_audio_audio_is_unmuted">Audio is unmuted.</string>
     <string name="webview_loaded">WebView Loaded!</string>
+    <string name="web_chrome_client_activity_title">WebChromeClient Demo</string>
 
     <!-- PaymentRequest -->
     <string name="payment_request_activity_title">PaymentRequest</string>
