@@ -149,6 +149,7 @@ public class WebViewFeature {
             NAVIGATION_GET_RESPONSE_HEADERS,
             NAVIGATION_GET_NAVIGATION_START_UPTIME_MILLIS,
             NAVIGATION_LISTENER_NAVIGATION_STATE,
+            THEME_COLOR_CALLBACK,
     })
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.PARAMETER, ElementType.METHOD})
@@ -1055,6 +1056,14 @@ public class WebViewFeature {
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     public static final String NAVIGATION_LISTENER_NAVIGATION_STATE =
             "NAVIGATION_LISTENER_NAVIGATION_STATE";
+
+    /**
+     * Feature for {@link #isFeatureSupported(String)}.
+     * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String THEME_COLOR_CALLBACK = "THEME_COLOR_CALLBACK";
 
     /**
      * Return whether a feature is supported at run-time. This will check whether a feature is
