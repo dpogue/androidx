@@ -151,6 +151,7 @@ public class WebViewFeature {
             NAVIGATION_GET_NAVIGATION_START_UPTIME_MILLIS,
             NAVIGATION_LISTENER_NAVIGATION_STATE,
             NAVIGATION_LISTENER_NAVIGATION_VISIBLE,
+            THEME_COLOR_CALLBACK,
             GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1,
             WEB_MESSAGE_SHARED_ARRAY_BUFFER,
             PROFILE_SELECTED_SITE_ISOLATION_EXPERIMENTAL_V1,
@@ -1066,6 +1067,14 @@ public class WebViewFeature {
     @NavigationListener.ExperimentalOnNavigationVisible
     public static final String NAVIGATION_LISTENER_NAVIGATION_VISIBLE =
             "WEB_VIEW_NAVIGATION_LISTENER_NAVIGATION_VISIBLE";
+
+    /**
+     * Feature for {@link #isFeatureSupported(String)}.
+     * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String THEME_COLOR_CALLBACK = "THEME_COLOR_CALLBACK";
 
     /**
      * Feature for {@link #isFeatureSupported(String)}.

@@ -136,6 +136,10 @@ class MainActivity : AppCompatActivity() {
                         Intent(this, NavigateActivity::class.java),
                     ),
                     MenuListView.MenuItem(
+                        getResources().getString(R.string.web_chrome_client_activity_title),
+                        Intent(this, WebChromeClientActivity::class.java),
+                    ),
+                    MenuListView.MenuItem(
                         getResources().getString(R.string.google_accounts_callback_activity_title),
                         Intent(this, GoogleAccountsCallbackActivity::class.java),
                     ),

@@ -1160,6 +1160,15 @@ public class WebViewFeatureInternal {
     /**
      * Feature for {@link WebViewFeature#isFeatureSupported(String)}.
      * This feature covers
+     * {@link WebChromeClientCompat#onReceivedThemeColor(WebView, Color)}
+     */
+    public static final ApiFeature.NoFramework THEME_COLOR_CALLBACK =
+            new ApiFeature.NoFramework(WebViewFeature.THEME_COLOR_CALLBACK,
+                    Features.THEME_COLOR_CALLBACK);
+
+    /**
+     * Feature for {@link WebViewFeature#isFeatureSupported(String)}.
+     * This feature covers
      * {@link WebViewCompat#setGoogleAccountsCallback(WebView, String, Executor, Consumer)},
      * {@link WebViewCompat#setGoogleAccountsCallback(WebView, String, Consumer)},
      * {@link WebViewCompat#clearGoogleAccountsCallback(WebView)},
