@@ -33,7 +33,11 @@
     </style>
   </head>
   <body>
-    <span>This page supports customizing the <code>theme-color</code> attribute.</span>
+    <span>This page supports customizing the <code>theme-color</code> and <code>viewport-fit</code> attributes.</span>
+
+    <div>
+      <button id="toggle">Toggle Viewport Fit</button>
+    </div>
 
     <div>
       <label for="picker">Theme Color:</label>
@@ -41,6 +45,17 @@
     </div>
 
     <script>
+      const vp = document.querySelector(`meta[name="viewport"]`);
+      document.getElementById("toggle").addEventListener("click", (e) => {
+        const attr = vp.getAttribute("content");
+
+        if (attr.includes("cover")) {
+          vp.setAttribute("content", attr.replace("cover", "contain"));
+        } else {
+          vp.setAttribute("content", attr.replace("contain", "cover"));
+        }
+      });
+
       document.getElementById("picker").addEventListener("change", (e) => {
         document.querySelector(`meta[name="theme-color"]`).setAttribute("content", e.target.value);
       });

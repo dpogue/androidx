@@ -82,8 +82,41 @@ public class WebChromeClientCompatTest {
         Assert.assertEquals(Color.BLUE, themeColor.toArgb());
     }
 
+    @Test
+    public void testOnViewportFitChanged() throws Throwable {
+        WebkitUtils.checkFeature(WebViewFeature.VIEWPORT_FIT_CALLBACK);
+
+        final MockWebChromeClient webChromeClient = new MockWebChromeClient();
+        mWebViewOnUiThread.setWebChromeClient(webChromeClient);
+
+        String data = "<html><meta name=\"viewport\" content=\"viewport-fit=cover\"></html>";
+        mWebViewOnUiThread.loadDataAndWaitForCompletion(data, "text/html", null);
+
+        @WebChromeClientCompat.ViewportFitType int viewportFit = webChromeClient.waitForViewportFit();
+        Assert.assertEquals(WebChromeClientCompat.VIEWPORT_FIT_COVER, viewportFit);
+
+        mWebViewOnUiThread.evaluateJavascriptSync(
+                "document.querySelector('meta').setAttribute('content', 'viewport-fit=auto');");
+
+        viewportFit = webChromeClient.waitForViewportFit();
+        Assert.assertEquals(WebChromeClientCompat.VIEWPORT_FIT_AUTO, viewportFit);
+
+        mWebViewOnUiThread.evaluateJavascriptSync(
+                "document.querySelector('meta').setAttribute('content', 'viewport-fit=contain');");
+
+        viewportFit = webChromeClient.waitForViewportFit();
+        Assert.assertEquals(WebChromeClientCompat.VIEWPORT_FIT_CONTAIN, viewportFit);
+
+        mWebViewOnUiThread.evaluateJavascriptSync(
+                "document.querySelector('meta').setAttribute('content', 'width=device-width');");
+
+        viewportFit = webChromeClient.waitForViewportFit();
+        Assert.assertEquals(WebChromeClientCompat.VIEWPORT_FIT_AUTO, viewportFit);
+    }
+
     private class MockWebChromeClient extends WebViewOnUiThread.WaitForProgressClient {
         private final BlockingQueue<Color> mThemeColors = new LinkedBlockingQueue<>();
+        private final BlockingQueue<Integer> mViewportFits = new LinkedBlockingQueue<>();
 
         MockWebChromeClient() {
             super(mWebViewOnUiThread);
@@ -91,6 +124,10 @@ public class WebChromeClientCompatTest {
 
         public Color waitForThemeColor() throws Exception {
             return WebkitUtils.waitForNextQueueElement(mThemeColors);
+        }
+
+        public @WebChromeClientCompat.ViewportFitType int waitForViewportFit() throws Exception {
+            return WebkitUtils.waitForNextQueueElement(mViewportFits);
         }
 
         @Override
@@ -102,6 +139,17 @@ public class WebChromeClientCompatTest {
 
             super.onReceivedThemeColor(view, color);
             mThemeColors.add(color);
+        }
+
+        @Override
+        public void onViewportFitChanged(WebView view, int viewportFit) {
+            if (Looper.myLooper() != Looper.getMainLooper()) {
+                throw new IllegalStateException(
+                        "onViewportFitChanged was not called on the UI thread.");
+            }
+
+            super.onViewportFitChanged(view, viewportFit);
+            mViewportFits.add(viewportFit);
         }
     }
 }
