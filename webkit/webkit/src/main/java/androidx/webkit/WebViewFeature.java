@@ -152,6 +152,7 @@ public class WebViewFeature {
             NAVIGATION_LISTENER_NAVIGATION_STATE,
             NAVIGATION_LISTENER_NAVIGATION_VISIBLE,
             THEME_COLOR_CALLBACK,
+            VIEWPORT_FIT_CALLBACK,
             GOOGLE_ACCOUNTS_CALLBACK_EXPERIMENTAL_V1,
             WEB_MESSAGE_SHARED_ARRAY_BUFFER,
             PROFILE_SELECTED_SITE_ISOLATION_EXPERIMENTAL_V1,
@@ -1075,6 +1076,14 @@ public class WebViewFeature {
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static final String THEME_COLOR_CALLBACK = "THEME_COLOR_CALLBACK";
+
+    /**
+     * Feature for {@link #isFeatureSupported(String)}.
+     * This feature covers
+     * {@link WebChromeClientCompat#onViewportFitChanged(WebView, int)}
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String VIEWPORT_FIT_CALLBACK = "VIEWPORT_FIT_CALLBACK";
 
     /**
      * Feature for {@link #isFeatureSupported(String)}.

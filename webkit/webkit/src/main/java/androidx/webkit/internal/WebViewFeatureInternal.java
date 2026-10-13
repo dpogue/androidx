@@ -1167,6 +1167,14 @@ public class WebViewFeatureInternal {
                     Features.THEME_COLOR_CALLBACK);
 
     /**
+     * This feature covers
+     * {@link WebChromeClientCompat#onViewportFitChanged(WebView, int)}
+     */
+    public static final ApiFeature.NoFramework VIEWPORT_FIT_CALLBACK =
+            new ApiFeature.NoFramework(WebViewFeature.VIEWPORT_FIT_CALLBACK,
+                    Features.VIEWPORT_FIT_CALLBACK);
+
+    /**
      * Feature for {@link WebViewFeature#isFeatureSupported(String)}.
      * This feature covers
      * {@link WebViewCompat#setGoogleAccountsCallback(WebView, String, Executor, Consumer)},
