@@ -150,6 +150,7 @@ public class WebViewFeature {
             NAVIGATION_GET_NAVIGATION_START_UPTIME_MILLIS,
             NAVIGATION_LISTENER_NAVIGATION_STATE,
             THEME_COLOR_CALLBACK,
+            VIEWPORT_FIT_CALLBACK,
     })
     @Retention(RetentionPolicy.SOURCE)
     @Target({ElementType.PARAMETER, ElementType.METHOD})
@@ -1064,6 +1065,14 @@ public class WebViewFeature {
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public static final String THEME_COLOR_CALLBACK = "THEME_COLOR_CALLBACK";
+
+    /**
+     * Feature for {@link #isFeatureSupported(String)}.
+     * This feature covers
+     * {@link WebChromeClientCompat#onViewportFitChanged(WebView, int)}
+     */
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    public static final String VIEWPORT_FIT_CALLBACK = "VIEWPORT_FIT_CALLBACK";
 
     /**
      * Return whether a feature is supported at run-time. This will check whether a feature is

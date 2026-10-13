@@ -20,12 +20,16 @@ import android.graphics.Color;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
+import androidx.annotation.IntDef;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.UiThread;
 
 import org.chromium.support_lib_boundary.WebChromeClientBoundaryInterface;
 import org.chromium.support_lib_boundary.util.Features;
 import org.jspecify.annotations.NonNull;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Compatibility version of {@link android.webkit.WebChromeClient}.
@@ -35,7 +39,8 @@ import org.jspecify.annotations.NonNull;
 public class WebChromeClientCompat extends WebChromeClient implements
         WebChromeClientBoundaryInterface {
     private static final String[] sSupportedFeatures = new String[] {
-        Features.THEME_COLOR_CALLBACK + Features.DEV_SUFFIX
+        Features.THEME_COLOR_CALLBACK + Features.DEV_SUFFIX,
+        Features.VIEWPORT_FIT_CALLBACK + Features.DEV_SUFFIX
     };
 
     /**
@@ -60,4 +65,42 @@ public class WebChromeClientCompat extends WebChromeClient implements
     @Override
     @UiThread
     public void onReceivedThemeColor(@NonNull WebView view, @NonNull Color color) {}
+
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
+    @IntDef(value = { VIEWPORT_FIT_AUTO, VIEWPORT_FIT_CONTAIN, VIEWPORT_FIT_COVER })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface ViewportFitType {}
+
+    /**
+     * WebView document content will be displayed to ensure it is viewable on the screen.
+     */
+    public static final int VIEWPORT_FIT_AUTO =
+            WebChromeClientBoundaryInterface.ViewportFitType.AUTO;
+
+    /**
+     * WebView document content will be displayed contained within the safe areas of the screen,
+     * avoiding display cutouts and other obscured insets.
+     */
+    public static final int VIEWPORT_FIT_CONTAIN =
+            WebChromeClientBoundaryInterface.ViewportFitType.CONTAIN;
+
+    /**
+     * WebView document content will be displayed covering the full screen, edge-to-edge,
+     * including behind display cutouts and other obscured areas.
+     *
+     * It's highly recommended that web content use safe area inset variables to ensure
+     * important content doesn't end up outside the viewable display area.
+     */
+    public static final int VIEWPORT_FIT_COVER =
+            WebChromeClientBoundaryInterface.ViewportFitType.COVER;
+
+    /**
+     * Notify the host application of a change to the document's declared viewport fit layout.
+     *
+     * @param view The WebView that initiated the callback.
+     * @param value The new viewport fit layout for the document.
+     */
+    @Override
+    @UiThread
+    public void onViewportFitChanged(@NonNull WebView view, @ViewportFitType int value) {}
 }

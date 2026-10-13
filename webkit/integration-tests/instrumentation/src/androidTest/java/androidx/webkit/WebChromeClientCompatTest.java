@@ -74,6 +74,7 @@ public class WebChromeClientCompatTest {
 
     private class MockWebChromeClient extends WebViewOnUiThread.WaitForProgressClient {
         private final BlockingQueue<Color> mThemeColors = new LinkedBlockingQueue<>();
+        private final BlockingQueue<int> mViewportFits = new LinkedBlockingQueue<>();
 
         MockWebChromeClient() {
             super(mWebViewOnUiThread);
@@ -83,10 +84,20 @@ public class WebChromeClientCompatTest {
             return WebkitUtils.waitForNextQueueElement(mThemeColors);
         }
 
+        public int waitForViewportFit() throws Exception {
+            return WebkitUtils.waitForNextQueueElement(mViewportFits);
+        }
+
         @Override
         public void onReceivedThemeColor(WebView view, Color color) {
             super.onReceivedThemeColor(view, color);
             mThemeColors.add(color);
+        }
+
+        @Override
+        public void onViewportFitChanged(WebView view, int viewportFit) {
+            super.onViewportFitChanged(view, viewportFit);
+            mViewportFits.add(viewportFit);
         }
     }
 }
